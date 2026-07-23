@@ -73,20 +73,26 @@ const Typewriter = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: aiPrompt,
-          recipientName: recipientFirstName,
-          senderName: senderFirstName,
+          messageTitle: messageTitle || "Special Message",
+          context: `from ${senderFirstName} to ${recipientFirstName}`,
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to generate message");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to generate message");
+      }
 
       const data = await response.json();
       setMessage(data.enhancedMessage);
+      if (data.enhancedTitle && !messageTitle) {
+        setMessageTitle(data.enhancedTitle);
+      }
       toast.success("Message generated! Feel free to edit it.");
       setAiPrompt("");
     } catch (error) {
       console.error("AI generation error:", error);
-      toast.error("Failed to generate message. Please try again.");
+      toast.error(error instanceof Error ? error.message : "Failed to generate message. Please try again.");
     } finally {
       setIsGenerating(false);
     }
@@ -169,9 +175,9 @@ const Typewriter = () => {
               <div className="mt-6 p-6 bg-white rounded-xl border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <p className="text-[18px] font-bold text-green-700">Generated Message (You can edit below)</p>
+                  <p className="text-[20px] font-bold text-green-700">Generated Message (You can edit below)</p>
                 </div>
-                <p className="text-[18px] text-gray-700 leading-relaxed whitespace-pre-wrap">
+                <p className="text-[22px] text-gray-800 font-semibold leading-relaxed whitespace-pre-wrap">
                   {message}
                 </p>
               </div>
@@ -201,12 +207,12 @@ const Typewriter = () => {
                 alt="typewriter back"
                 className="absolute w-[1007px] -left-7 bottom-0 top-0 my-auto"
               />
-              <div className="flex flex-col z-[999] relative  -bottom-10 mr-[140px] gap-[30px]  w-[559.2px] border-[#E5E5E5] bg-white rounded-2xl border-[0.5px] p-[23px] pb-[118px] font-neuemontreal text-[20px] font-medium">
+              <div className="flex flex-col z-[999] relative -bottom-10 mr-[140px] gap-[30px] w-[559.2px] border-[#E5E5E5] bg-white rounded-2xl border-[0.5px] p-[23px] pb-[118px]">
                 <Textarea
                   ref={textareaRef}
                   value={message}
                   placeholder="Start typing your message here..."
-                  className="w-full resize-none overflow-scroll border-none outline-none shadow-none focus-visible:ring-0 bg-transparent text-[20px] leading-7 font-neuemontreal font-medium text-stone-800 p-0 h-[200px] caret-stone-800 placeholder:text-gray-400"
+                  className="w-full resize-none overflow-scroll border-none outline-none shadow-none focus-visible:ring-0 bg-transparent text-[24px] leading-8 font-neuemontreal font-semibold text-stone-900 p-0 h-[200px] caret-stone-800 placeholder:text-gray-400"
                   spellCheck={false}
                   onKeyDown={playKeySound}
                   onChange={(e) => {
