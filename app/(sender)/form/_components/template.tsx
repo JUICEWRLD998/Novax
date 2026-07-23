@@ -1,33 +1,34 @@
-import Image from "next/image";
 import { useFormStore } from "@/store/form.store";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const Template = () => {
   const { template, setSteps, steps } = useFormStore();
 
   return (
-    <section className="flex flex-col items-center gap-[50px] h-full max-h-screen mt-[45px]">
-      <h2 className="text-[50px]/[100%] font-normal font-pp-mondwest">
-        Choose a <span className="font-bold font-pp-neuebit">Template</span>
-      </h2>
-      <div className="flex gap-[17px]">
-        <SinglePageTemplate comingSoon />
-        <MultiPageTemplate comingSoon />
-        <NewTemplate />
+    <section className="flex flex-col items-center gap-[40px] h-full w-full max-w-[1400px] mt-[45px] px-6">
+      <div className="text-center">
+        <h2 className="text-[56px]/[110%] font-normal font-pp-mondwest mb-3">
+          Choose Your <span className="font-bold font-pp-neuebit">Template</span>
+        </h2>
+        <p className="text-[24px] text-gray-600 font-pp-neuebit">
+          All templates built with Unlayer Elements - fully customizable
+        </p>
       </div>
+      
+      <div className="grid grid-cols-2 gap-8 w-full max-w-[1200px]">
+        <RomanticTemplate />
+        <ProfessionalTemplate />
+        <PlayfulTemplate />
+        <ElegantTemplate />
+      </div>
+      
       <Button
         onClick={() => setSteps(steps + 1)}
         disabled={!template}
-        className="text-black mx-auto hover:text-white w-[107px] bg-[#FFF3F3] py-[10px] px-5 flex items-center gap-[10px]"
+        className="text-black text-[24px] font-bold mx-auto hover:text-white hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed w-[180px] bg-[#FFF3F3] py-6 px-6 flex items-center gap-3 mt-4"
       >
-        Enter
-        <Image
-          src="/icons/arrow-up.svg"
-          alt="arrow"
-          className="group-hover:rotate-12 transition-all"
-          width={20}
-          height={20}
-        />
+        Continue <ArrowRight size={28} />
       </Button>
     </section>
   );
@@ -35,238 +36,183 @@ const Template = () => {
 
 export default Template;
 
-const SinglePageTemplate = ({
-  comingSoon = false,
-}: {
-  comingSoon?: boolean;
-}) => {
-  const { template, setTemplate, senderFirstName } = useFormStore();
+const RomanticTemplate = () => {
+  const { template, setTemplate } = useFormStore();
+  const isSelected = template === "romantic";
+  
   return (
     <div
-      className={[
-        "relative rounded-xl",
-        template == "romantic" && !comingSoon
-          ? "border-[4px] border-black p-3"
-          : "",
-      ].join(" ")}
-      onClick={() => {
-        if (!comingSoon) setTemplate("romantic");
-      }}
+      onClick={() => setTemplate("romantic")}
+      className={`cursor-pointer rounded-2xl border-4 transition-all hover:shadow-xl ${
+        isSelected ? 'border-rose-500 shadow-2xl scale-[1.02]' : 'border-gray-200 hover:border-rose-300'
+      }`}
     >
-      <div
-        className={[
-          "flex flex-col gap-[10px] max-w-[345px]",
-          comingSoon ? "cursor-not-allowed opacity-90" : "cursor-pointer",
-        ].join(" ")}
-      >
-        <div className="p-2 bg-[#FAF9F5] flex rounded-[14.55px] min-h-[388px] h-full ">
-          <div className=" p-5 flex flex-col justify-between rounded-[14.55px] bg-[#d9d9d928] min-h-full border border-[#ffffff]">
-            <div className="bg-[url('/assets/love2.png')] bg-[#FFF3F3] bg-contain bg-no-repeat h-fit pt-[31px] px-[51px]">
-              <h3 className="text-[8px]/[16px] font-semibold text-center">
-                A Little Something for You… 💌
-              </h3>
-              <article className="px-[15px] bg-white pt-[30px] pb-[11px] flex flex-col min-h-full">
-                <div className="flex mb-[5px] items-center justify-between">
-                  <div className="flex items-center">
-                    <Image
-                      src="/assets/star.svg"
-                      alt="star"
-                      className="group-hover:rotate-12 transition-all"
-                      width={9}
-                      height={9}
-                    />
-                    <p className="text-[#1e1e1ebf] text-[4.45px] font-bold">
-                      Heyy Love,
-                    </p>
-                  </div>
-                  <Image
-                    src="/assets/circlee.svg"
-                    alt="circle"
-                    className="group-hover:rotate-12 transition-all"
-                    width={5}
-                    height={5}
-                  />
-                </div>
-                <div className="bg-[#FFF3F3] h-full p-[15px] flex flex-col items-center">
-                  <p className="text-[3px] font-medium noto-sans">
-                    I never expected you. I never planned for this. But somehow,
-                    you walked into my life, and suddenly, everything felt
-                    different—better, brighter, warmer. <br />
-                    There’s a kind of magic in the way you exist, effortlessly
-                    turning ordinary moments into something worth remembering.{" "}
-                    <br />
-                    The way you laugh, the way your eyes light up when you talk
-                    about something you love—I notice all of it. And every time
-                    I do, I feel grateful. Because in a world of billions, I get
-                    to know you, and that alone feels like a gift. <br />
-                    I don’t always have the perfect words to explain how much
-                    you mean to me. But if I could bottle up the way you make me
-                    feel, I’d never run out of reasons to smile. Even the quiet
-                    moments with you feel like they matter more. <br />
-                    And maybe that’s why I’m writing this now—because I don’t
-                    want to let another moment pass without telling you how
-                    special you are. Some things in life deserve to be said out
-                    loud, and this is one of them. <br />I don’t know what
-                    tomorrow holds, but I do know what I want right now. So,
-                    here goes… Will you be my Valentine? 💕
-                  </p>
-
-                  <p className="text-[14px/[120%] font-normal -rotate-12 mt-[6px] indie-flower">
-                    {senderFirstName}
-                  </p>
-                </div>
-                <Image
-                  src="/assets/yesno.svg"
-                  alt="circle"
-                  className="group-hover:rotate-12 transition-all self-end mt-[7px]"
-                  width={48}
-                  height={7}
-                />
-              </article>
+      <div className="bg-gradient-to-br from-pink-50 to-rose-100 p-6 rounded-xl">
+        <div className="bg-white rounded-lg p-8 shadow-inner min-h-[320px] flex items-center">
+          {/* Unlayer Elements Preview */}
+          <div className="space-y-4 w-full">
+            <div className="flex justify-center gap-2">
+              <div className="w-8 h-8 bg-rose-200 rounded-full" />
+              <div className="w-8 h-8 bg-pink-200 rounded-full" />
+              <div className="w-8 h-8 bg-red-200 rounded-full" />
             </div>
-
-            <h2 className="text-[42px]/[100%] mt-[13px] font-normal font-pp-mondwest -tracking-[4%]">
-              One Pager (Love)
-            </h2>
+            <div className="h-1 bg-gradient-to-r from-rose-300 via-pink-400 to-rose-300 rounded" />
+            <div className="text-center space-y-3">
+              <h3 className="text-2xl font-bold text-rose-600">💕 Message Title 💕</h3>
+              <div className="h-px bg-rose-200 w-20 mx-auto" />
+              <p className="text-sm text-gray-600 leading-relaxed px-4">
+                Your heartfelt message with beautiful romantic styling using Unlayer Elements...
+              </p>
+              <p className="text-lg text-rose-500 font-semibold italic">With love ❤️</p>
+            </div>
           </div>
+        </div>
+        <div className="mt-4 text-center">
+          <h4 className="text-[32px] font-bold font-pp-neuebit text-rose-600">Romantic</h4>
+          <p className="text-[18px] text-gray-600 mt-1 font-semibold">Perfect for love messages</p>
+          {isSelected && (
+            <div className="mt-2 bg-rose-500 text-white text-sm font-bold py-2 px-4 rounded-full inline-block">
+              ✓ Selected
+            </div>
+          )}
         </div>
       </div>
-      {comingSoon ? (
-        <div className="absolute inset-0 z-30 rounded-xl bg-black/35 backdrop-blur-[2px] flex items-center justify-center">
-          <div className="bg-[#FFF3F3] text-black font-pp-neuebit font-bold text-[22px]/[100%] px-4 py-2 rounded-full">
-            Coming Soon
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 };
 
-const MultiPageTemplate = ({
-  comingSoon = false,
-}: {
-  comingSoon?: boolean;
-}) => {
-  const { template, setTemplate, senderFirstName } = useFormStore();
+const ProfessionalTemplate = () => {
+  const { template, setTemplate } = useFormStore();
+  const isSelected = template === "professional";
+  
   return (
     <div
-      className={[
-        "relative rounded-xl",
-        template == "professional" && !comingSoon
-          ? "border-[4px] border-black p-3"
-          : "",
-      ].join(" ")}
-      onClick={() => {
-        if (!comingSoon) setTemplate("professional");
-      }}
+      onClick={() => setTemplate("professional")}
+      className={`cursor-pointer rounded-2xl border-4 transition-all hover:shadow-xl ${
+        isSelected ? 'border-blue-600 shadow-2xl scale-[1.02]' : 'border-gray-200 hover:border-blue-400'
+      }`}
     >
-      <div
-        className={[
-          "flex flex-col gap-[10px] max-w-[343px]",
-          comingSoon ? "cursor-not-allowed opacity-90" : "cursor-pointer",
-        ].join(" ")}
-      >
-        <div className="p-2 bg-[#FAF9F5] rounded-[14.55px] flex min-h-[388px] h-full">
-          <div className=" p-5 px-[38px] flex flex-col justify-between border-[#ffffff] border  rounded-[14.55px] bg-[#d9d9d928]">
-            <article className="px-[25px] bg-white pt-[30px] pb-[11px] flex flex-col h-fit">
-              <div className="flex mb-[5px] items-center justify-between">
-                <div className="flex items-center">
-                  <Image
-                    src="/assets/star.svg"
-                    alt="star"
-                    className="group-hover:rotate-12 transition-all"
-                    width={9}
-                    height={9}
-                  />
-                  <p className="text-[#1e1e1ebf] text-[4.45px] font-bold">
-                    Heyy Love,
-                  </p>
-                </div>
-                <Image
-                  src="/assets/circlee.svg"
-                  alt="circle"
-                  className="group-hover:rotate-12 transition-all"
-                  width={5}
-                  height={5}
-                />
-              </div>
-              <div className="bg-[#FFF3F3] h-full p-[20px] flex flex-col items-center">
-                <p className="text-[4px]/[6px] font-medium noto-sans">
-                  I never expected you. I never planned for this. But somehow,
-                  you walked into my life, and suddenly, everything felt
-                  different—better, brighter, warmer. <br /> <br />
-                  There’s a kind of magic in the way you exist, effortlessly
-                  turning ordinary moments into something worth remembering.{" "}
-                  <br /> <br />
-                  The way you laugh, the way your eyes light up when you talk
-                  about something you love—I notice all of it. And every time I
-                  do, I feel grateful. Because in a world of billions, I get to
-                  know you, and that alone feels like a gift. <br /> <br />
-                  I don’t always have the perfect words to explain how much you
-                  mean to me. But if I could bottle up the way you make me feel,
-                  I’d never run out of reasons to smile. Even the quiet moments
-                  with you feel like they matter more. <br /> <br />
-                  And maybe that’s why I’m writing this now—because I don’t want
-                  to let another moment pass without telling you how special you
-                  are. Some things in life deserve to be said out loud, and this
-                  is one of them. <br /> <br />I don’t know what tomorrow holds,
-                  but I do know what I want right now. So, here goes… Will you
-                  be my Valentine? 💕
-                </p>
-
-                <p className="text-[14px/[120%] font-normal -rotate-12 mt-[6px] indie-flower">
-                  {senderFirstName}
-                </p>
-              </div>
-              <Image
-                src="/assets/yesno.svg"
-                alt="circle"
-                className="group-hover:rotate-12 transition-all self-end mt-[7px]"
-                width={48}
-                height={7}
-              />
-            </article>
-
-            <h2 className="text-[42px]/[100%] mt-[13px] font-normal font-pp-mondwest -tracking-[4%]">
-              Multi-Paged
-            </h2>
+      <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-6 rounded-xl">
+        <div className="bg-white rounded-lg p-8 shadow-inner min-h-[320px] flex items-center">
+          {/* Unlayer Elements Preview */}
+          <div className="space-y-4 w-full">
+            <div className="bg-slate-700 text-white text-center py-4 px-6 rounded">
+              <h3 className="text-xl font-light tracking-wide">MESSAGE TITLE</h3>
+            </div>
+            <div className="flex justify-center gap-3">
+              <div className="w-6 h-6 bg-slate-300 rounded opacity-80" />
+              <div className="w-6 h-6 bg-slate-400 rounded opacity-80" />
+              <div className="w-6 h-6 bg-slate-500 rounded opacity-80" />
+            </div>
+            <div className="text-left space-y-2 px-4">
+              <p className="text-sm text-slate-600 font-medium">Dear Recipient,</p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Professional message with elegant styling using Unlayer Elements components...
+              </p>
+              <div className="border-t border-gray-300 my-3" />
+              <p className="text-sm text-slate-700 font-semibold">Sender Name</p>
+            </div>
           </div>
+        </div>
+        <div className="mt-4 text-center">
+          <h4 className="text-[32px] font-bold font-pp-neuebit text-slate-700">Professional</h4>
+          <p className="text-[18px] text-gray-600 mt-1 font-semibold">Clean and elegant</p>
+          {isSelected && (
+            <div className="mt-2 bg-blue-600 text-white text-sm font-bold py-2 px-4 rounded-full inline-block">
+              ✓ Selected
+            </div>
+          )}
         </div>
       </div>
-      {comingSoon ? (
-        <div className="absolute inset-0 z-30 rounded-xl bg-black/35 backdrop-blur-[2px] flex items-center justify-center">
-          <div className="bg-[#FFF3F3] text-black font-pp-neuebit font-bold text-[22px]/[100%] px-4 py-2 rounded-full">
-            Coming Soon
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 };
 
-const NewTemplate = () => {
-  const { template, setTemplate, senderFirstName } = useFormStore();
+const PlayfulTemplate = () => {
+  const { template, setTemplate } = useFormStore();
+  const isSelected = template === "playful";
+  
   return (
     <div
-      className={
-        template == "playful" ? "border-[4px] border-black rounded-xl p-3" : ""
-      }
       onClick={() => setTemplate("playful")}
+      className={`cursor-pointer rounded-2xl border-4 transition-all hover:shadow-xl ${
+        isSelected ? 'border-purple-500 shadow-2xl scale-[1.02]' : 'border-gray-200 hover:border-purple-400'
+      }`}
     >
-      <div className="flex flex-col gap-[10px] max-w-[378px]  cursor-pointer">
-        <div className="p-2 bg-[#FAF9F5] rounded-[14.55px] flex min-h-[388px] h-full">
-          <div className=" p-5  flex flex-col items-center justify-between border-[#ffffff] border  rounded-[14.55px] bg-[#d9d9d928]">
-            <Image
-              src="/assets/newtemplate.svg"
-              alt="new template"
-              width={187}
-              height={267}
-            />
-
-            <h2 className="text-[42px]/[100%] mt-[13px] font-normal font-pp-mondwest -tracking-[4%]">
-              One Pager (Subtle)
-            </h2>
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl">
+        <div className="bg-white rounded-lg p-8 shadow-inner min-h-[320px] flex items-center">
+          {/* Unlayer Elements Preview */}
+          <div className="space-y-4 w-full">
+            <div className="flex justify-center gap-2 flex-wrap">
+              <div className="w-10 h-10 bg-yellow-300 rounded-lg rotate-12" />
+              <div className="w-10 h-10 bg-purple-300 rounded-full -rotate-6" />
+              <div className="w-10 h-10 bg-pink-300 rounded-lg rotate-6" />
+            </div>
+            <div className="text-center space-y-3">
+              <h3 className="text-2xl font-bold text-purple-600 tracking-wide">✨ HEY THERE! ✨</h3>
+              <div className="space-y-2 px-4">
+                <div className="h-3 bg-purple-200 rounded w-3/4 mx-auto" />
+                <div className="h-3 bg-pink-200 rounded w-full" />
+                <div className="h-3 bg-purple-200 rounded w-2/3 mx-auto" />
+              </div>
+              <p className="text-lg text-purple-500 font-bold">~ Your Friend 🎉</p>
+            </div>
           </div>
+        </div>
+        <div className="mt-4 text-center">
+          <h4 className="text-[32px] font-bold font-pp-neuebit text-purple-600">Playful</h4>
+          <p className="text-[18px] text-gray-600 mt-1 font-semibold">Fun and colorful</p>
+          {isSelected && (
+            <div className="mt-2 bg-purple-500 text-white text-sm font-bold py-2 px-4 rounded-full inline-block">
+              ✓ Selected
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ElegantTemplate = () => {
+  const { template, setTemplate } = useFormStore();
+  const isSelected = template === "elegant";
+  
+  return (
+    <div
+      onClick={() => setTemplate("elegant")}
+      className={`cursor-pointer rounded-2xl border-4 transition-all hover:shadow-xl ${
+        isSelected ? 'border-amber-600 shadow-2xl scale-[1.02]' : 'border-gray-200 hover:border-amber-400'
+      }`}
+    >
+      <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-6 rounded-xl">
+        <div className="bg-white rounded-lg p-8 shadow-inner min-h-[320px] flex items-center border-2 border-amber-200">
+          {/* Unlayer Elements Preview */}
+          <div className="space-y-4 w-full">
+            <div className="text-center border-b-2 border-amber-300 pb-3">
+              <h3 className="text-2xl font-serif text-amber-800 italic">A Special Message</h3>
+            </div>
+            <div className="flex justify-center gap-4">
+              <div className="w-2 h-2 bg-amber-400 rounded-full" />
+              <div className="w-2 h-2 bg-amber-500 rounded-full" />
+              <div className="w-2 h-2 bg-amber-400 rounded-full" />
+            </div>
+            <div className="text-center space-y-2 px-6">
+              <p className="text-sm text-gray-700 leading-relaxed font-serif italic">
+                Sophisticated message with timeless elegance, crafted using Unlayer Elements...
+              </p>
+              <div className="border-t border-amber-200 my-3 w-16 mx-auto" />
+              <p className="text-base text-amber-800 font-serif">Sincerely yours</p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 text-center">
+          <h4 className="text-[32px] font-bold font-pp-neuebit text-amber-800">Elegant</h4>
+          <p className="text-[18px] text-gray-600 mt-1 font-semibold">Timeless and sophisticated</p>
+          {isSelected && (
+            <div className="mt-2 bg-amber-600 text-white text-sm font-bold py-2 px-4 rounded-full inline-block">
+              ✓ Selected
+            </div>
+          )}
         </div>
       </div>
     </div>

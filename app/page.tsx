@@ -21,7 +21,7 @@ export default function Home() {
             </p>
             <p className="text-[35px]/[100%] font-pp-neuebit font-bold mb-[50px] text-center">
               Create beautiful, AI-enhanced messages with full customization.
-              Share via URL - no database required.
+              Share via URL.
             </p>
           </div>
 
@@ -35,7 +35,7 @@ export default function Home() {
         </div>
 
         {/* Demo Section */}
-        <div className="bg-[url('/assets/bg-flowerss.png')] rounded-[20px] pt-[33px] pb-[48px] mx-6 mb-5 flex flex-col items-center bg-cover bg-center border border-[#F0F0EF]">
+        <div className="bg-gradient-to-br from-pink-200 via-rose-300 to-pink-400 rounded-[20px] pt-[33px] pb-[48px] mx-6 mb-5 flex flex-col items-center bg-cover bg-center border border-[#F0F0EF]">
           <h2 className="text-[35px]/[100%] mb-[25px] text-white -tracking-[2%] font-normal font-pp-mondwest">
             When love and code meets...
           </h2>
@@ -208,13 +208,41 @@ export default function Home() {
         </div>
 
         {/* Customize Visual */}
-        <div className="flex flex-col justify-center p-6 mb-[100px]">
-          <Image
-            src="/assets/customize-large.svg"
-            alt="customizeee"
-            width={1166}
-            height={827}
-          />
+        <div className="flex flex-col justify-center items-center gap-8 p-6 mb-[100px]">
+          <div className="grid grid-cols-3 gap-6">
+            <Image
+              src="/assets/preview1.svg"
+              alt="customization preview"
+              width={350}
+              height={250}
+            />
+            <Image
+              src="/assets/preview2.svg"
+              alt="customization preview"
+              width={350}
+              height={250}
+            />
+            <Image
+              src="/assets/preview3.svg"
+              alt="customization preview"
+              width={350}
+              height={250}
+            />
+          </div>
+          <div className="flex gap-6">
+            <Image
+              src="/assets/preview4.svg"
+              alt="customization preview"
+              width={350}
+              height={250}
+            />
+            <Image
+              src="/assets/preview5.svg"
+              alt="customization preview"
+              width={350}
+              height={250}
+            />
+          </div>
         </div>
 
         {/* Add Icons Section */}
@@ -257,13 +285,13 @@ export default function Home() {
 
         {/* Icon Visual */}
         <div className="flex items-center justify-center border border-[#F0F0EF] p-6 mx-6 mb-5">
-          <Image
-            src="/assets/loml.svg"
-            alt=""
-            width={1166}
-            height={286}
-            className="w-full"
-          />
+          <div className="grid grid-cols-5 gap-8 items-center">
+            <Image src="/assets/icon1.svg" alt="icon" width={200} height={200} />
+            <Image src="/assets/icon2.svg" alt="icon" width={200} height={200} />
+            <Image src="/assets/icon3.svg" alt="icon" width={200} height={200} />
+            <Image src="/assets/icon4.svg" alt="icon" width={200} height={200} />
+            <Image src="/assets/icon5.svg" alt="icon" width={200} height={200} />
+          </div>
         </div>
 
         {/* Share Section */}
@@ -291,14 +319,14 @@ export default function Home() {
             height={140}
           />
 
-          <div id="team" className="flex flex-col bg-[url('/assets/bg1.png')] rounded-[24px] bg-cover bg-center h-[730px] items-center justify-center gap-[35px] w-full">
+          <div id="team" className="flex flex-col bg-[url('/assets/bg3.webp')] rounded-[24px] bg-cover bg-center h-[730px] items-center justify-center gap-[35px] w-full">
             <h2 className="text-[119px]/[100%] font-bold font-pp-neuebit -tracking-[2%] text-white">
               Novax was built by a small team.
             </h2>
           </div>
 
           {/* Final CTA */}
-          <div className="flex flex-col bg-[url('/assets/bg3.png')] rounded-[24px] bg-cover bg-center relative h-[1128px] items-center justify-center gap-[35px] w-full">
+          <div className="flex flex-col bg-[url('/assets/bg3.webp')] rounded-[24px] bg-cover bg-center relative h-[1128px] items-center justify-center gap-[35px] w-full">
             <Image
               src="/assets/circle.svg"
               alt="customize"

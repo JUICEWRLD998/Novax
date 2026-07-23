@@ -38,16 +38,21 @@ const OnboardForm = () => {
             <Image src="/assets/iconsss.svg" alt="icons" width={655} height={102} className="" draggable={false} />
         </div>
             <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-4.25 w-53.5 text-[24px]/[100%] font-bold font-pp-neuebit">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-[600px]">
                         <FormField
                             control={form.control}
                             name="senderFirstName"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel className="text-[28px] font-bold font-pp-neuebit text-black mb-3 block">Your Name</FormLabel>
                                     <FormControl>
-                                        <Input className='bg-[#FAF9F5] rounded-md focus:border-black border-none py-2.75 h-full px-6.5' placeholder="enter your name" {...field} />
+                                        <Input 
+                                            className='bg-[#FAF9F5] rounded-lg focus:border-black border-2 border-gray-300 py-6 px-6 text-[32px] font-semibold text-black placeholder:text-gray-400 placeholder:font-normal' 
+                                            placeholder="Enter your name" 
+                                            {...field} 
+                                        />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="text-[18px] mt-2" />
                                 </FormItem>
                             )}
                         />
@@ -56,10 +61,16 @@ const OnboardForm = () => {
                             name="senderEmail"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel className="text-[28px] font-bold font-pp-neuebit text-black mb-3 block">Your Email</FormLabel>
                                     <FormControl>
-                                        <Input className='bg-[#FAF9F5] rounded-md focus:border-black border-none py-2.75 h-full px-6.5' placeholder="enter your email" {...field} />
+                                        <Input 
+                                            className='bg-[#FAF9F5] rounded-lg focus:border-black border-2 border-gray-300 py-6 px-6 text-[32px] font-semibold text-black placeholder:text-gray-400 placeholder:font-normal' 
+                                            placeholder="Enter your email" 
+                                            type="email"
+                                            {...field} 
+                                        />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="text-[18px] mt-2" />
                                 </FormItem>
                             )}
                         />
@@ -68,14 +79,24 @@ const OnboardForm = () => {
                             name="recipientFirstName"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel className="text-[28px] font-bold font-pp-neuebit text-black mb-3 block">Their Name</FormLabel>
                                     <FormControl>
-                                        <Input className='bg-[#FAF9F5] rounded-md focus:border-black border-none py-2.75 h-full px-6.5' placeholder="enter their name" {...field} />
+                                        <Input 
+                                            className='bg-[#FAF9F5] rounded-lg focus:border-black border-2 border-gray-300 py-6 px-6 text-[32px] font-semibold text-black placeholder:text-gray-400 placeholder:font-normal' 
+                                            placeholder="Enter their name" 
+                                            {...field} 
+                                        />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="text-[18px] mt-2" />
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className='text-black mx-auto hover:text-white w-[107px] bg-[#FFF3F3] py-[10px] px-5 flex items-center gap-[10px]'>Next <ArrowRight /> </Button>
+                        <Button 
+                            type="submit" 
+                            className='text-black text-[24px] font-bold mx-auto hover:text-white hover:bg-black w-[150px] bg-[#FFF3F3] py-6 px-6 flex items-center gap-3 mt-8'
+                        >
+                            Next <ArrowRight size={28} /> 
+                        </Button>
                     </form>
                 </Form> 
     
