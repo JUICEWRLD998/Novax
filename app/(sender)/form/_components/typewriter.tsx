@@ -121,7 +121,6 @@ const Typewriter = () => {
       >
         <TabsList className="text-[24px] font-bold font-pp-neuebit bg-gray-100 p-2 rounded-xl">
           <TabsTrigger value="ai" className="text-[20px] px-6 py-3">
-            <Sparkles className="mr-2" size={24} />
             AI Composer
           </TabsTrigger>
           <TabsTrigger value="you" className="text-[20px] px-6 py-3">Write Yourself</TabsTrigger>
@@ -134,7 +133,6 @@ const Typewriter = () => {
         >
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 w-full border-2 border-purple-200 shadow-lg">
             <div className="flex items-center gap-3 mb-4">
-              <Sparkles className="text-purple-600" size={32} />
               <h3 className="text-[32px] font-bold font-pp-neuebit text-purple-700">
                 Let AI Write Your Message
               </h3>
@@ -164,7 +162,6 @@ const Typewriter = () => {
                   </>
                 ) : (
                   <>
-                    <Sparkles className="mr-2" size={24} />
                     Generate Message with AI
                   </>
                 )}

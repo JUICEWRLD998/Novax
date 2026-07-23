@@ -70,7 +70,7 @@ Only return the JSON, no additional text.`;
         'X-Title': 'Novax',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-exp:free',
+        model: 'google/gemini-2.0-flash-thinking-exp:free',
         messages: [
           {
             role: 'user',
